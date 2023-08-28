@@ -15,4 +15,21 @@ namespace Project2_CMPG323.CORE.DTO
         public string? CustomerSurname { get; set; }
         public string? CellPhone { get; set; }
     }
+
+    public class AddCustomerDTO
+    { 
+        public string? CustomerTitle { get; set; }
+        public string? CustomerName { get; set; }
+        public string? CustomerSurname { get; set; }
+        public string? CellPhone { get; set; }
+    }
+
+    public class UpdatedCustomerDTO
+    {
+        public string? CustomerTitle { get; set; }
+        public string? CustomerName { get; set; }
+        public string? CustomerSurname { get; set; }
+        public string? CellPhone { get; set; }
+    }
+
 }
