@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project2_CMPG323.API", "Project2_CMPG323.API\Project2_CMPG323.API.csproj", "{0A93AD21-BDDF-4858-87C2-7CE94E7C6C75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project2_CMPG323.CORE", "Project2_CMPG323.CORE\Project2_CMPG323.CORE.csproj", "{B0D43E70-A6F2-438E-97B3-9DF6DFB37582}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A93AD21-BDDF-4858-87C2-7CE94E7C6C75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A93AD21-BDDF-4858-87C2-7CE94E7C6C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A93AD21-BDDF-4858-87C2-7CE94E7C6C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A93AD21-BDDF-4858-87C2-7CE94E7C6C75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0D43E70-A6F2-438E-97B3-9DF6DFB37582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0D43E70-A6F2-438E-97B3-9DF6DFB37582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0D43E70-A6F2-438E-97B3-9DF6DFB37582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0D43E70-A6F2-438E-97B3-9DF6DFB37582}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFA2826F-AF3D-4F20-84B6-C308193BAD91}
+	EndGlobalSection
+EndGlobal

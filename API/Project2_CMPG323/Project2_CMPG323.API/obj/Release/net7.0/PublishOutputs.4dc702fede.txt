@@ -1,0 +1,12 @@
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\Project2_CMPG323.API.exe
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\appsettings.Development.json
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\appsettings.json
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\Project2_CMPG323.API.dll
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\Project2_CMPG323.API.deps.json
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\Project2_CMPG323.API.runtimeconfig.json
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\Project2_CMPG323.API.pdb
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\Microsoft.AspNetCore.OpenApi.dll
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\Microsoft.OpenApi.dll
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+X:\WORK\Study\PersonalProjects\CMPG_323_Project_2_-_38336529\API\Project2_CMPG323\Project2_CMPG323.API\obj\Release\net7.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
