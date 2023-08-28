@@ -63,7 +63,8 @@ namespace Project2_CMPG323.CORE.Services
             }
             else
             {
-                lastProductId = ++lastProduct.ProductId;
+                lastProductId = lastProduct.ProductId;
+                ++lastProductId;
             }
 
             var addProductDomainModel = new Product

@@ -69,7 +69,8 @@ namespace Project2_CMPG323.CORE.Services
             }
             else
             {
-                lastCustomerId = ++lastCustomer.CustomerId;
+                lastCustomerId = lastCustomer.CustomerId;
+                ++lastCustomerId;
             }
 
             var addCustomerDomainModel = new Customer
