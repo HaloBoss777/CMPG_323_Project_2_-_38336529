@@ -38,5 +38,15 @@ namespace Project2_CMPG323.API.Controllers
 
             return Ok(productDTO);
         }
+
+        //https://localhost:1234/api/Products/CreateProduct
+        [HttpPost]
+        [Route("/api/Products/CreateProduct")]
+        public async Task<IActionResult> CreateProduct([FromBody] CreatProductDTO createProductDTO)
+        {
+            var createdProductDTO = await _productService.CreateProduct(createProductDTO);
+
+            return CreatedAtAction(nameof(GetProduct), new { id = createdProductDTO.ProductId }, createdProductDTO);
+        }
     }
 }

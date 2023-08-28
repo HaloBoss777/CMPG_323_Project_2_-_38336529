@@ -16,4 +16,11 @@ namespace Project2_CMPG323.CORE.DTO
         public string? ProductDescription { get; set; }
         public int? UnitsInStock { get; set; }
     }
+
+    public class CreatProductDTO
+    {
+        public string ProductName { get; set; } = null!;
+        public string? ProductDescription { get; set; }
+        public int? UnitsInStock { get; set; }
+    }
 }

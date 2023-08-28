@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Project2_CMPG323.CORE.DTO;
+using Project2_CMPG323.CORE.Models;
 using Project2_CMPG323.CORE.Repos;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Project2_CMPG323.CORE.Services
     {
         Task<List<ProductDTO>> GetAllProductsAsync();
         Task<ProductDTO?> GetProduct(short id);
+        Task<ProductDTO> CreateProduct(CreatProductDTO creatProductDTO);
     }
 
     public class ProductService : IProductService
@@ -48,5 +50,41 @@ namespace Project2_CMPG323.CORE.Services
 
             }).FirstOrDefaultAsync();
         }
+
+        public async Task<ProductDTO> CreateProduct(CreatProductDTO creatProductDTO)
+        {
+            int lastProductId = 0;
+
+            var lastProduct = await _project2Context.Products.OrderByDescending(x => x.ProductId).FirstOrDefaultAsync();
+
+            if (lastProduct is null)
+            {
+                lastProductId = 1;
+            }
+            else
+            {
+                lastProductId = ++lastProduct.ProductId;
+            }
+
+            var addProductDomainModel = new Product
+            {
+                ProductId = (Int16)(lastProductId),
+                ProductName = creatProductDTO.ProductName,
+                ProductDescription = creatProductDTO.ProductDescription,
+                UnitsInStock = creatProductDTO.UnitsInStock,
+            };
+
+            await _project2Context.Products.AddAsync(addProductDomainModel);
+            await _project2Context.SaveChangesAsync();
+
+            return new ProductDTO
+            {
+                ProductId = addProductDomainModel.ProductId,
+                ProductName = addProductDomainModel.ProductName,
+                ProductDescription = addProductDomainModel.ProductDescription,
+                UnitsInStock = addProductDomainModel.UnitsInStock,
+            };
+        }
+
     }
 }
