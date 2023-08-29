@@ -18,4 +18,26 @@ namespace Project2_CMPG323.CORE.DTO
 
         public int? Discount { get; set; }
     }
+
+    public class CreateOrderDetailDTO
+    {
+        public short OrderId { get; set; }
+
+        public short ProductId { get; set; }
+
+        public int Quantity { get; set; }
+
+        public int? Discount { get; set; }
+    }
+
+    public class UpdateOrderDetailDTO
+    {
+        public short? OrderId { get; set; }
+
+        public short? ProductId { get; set; }
+
+        public int? Quantity { get; set; }
+
+        public int? Discount { get; set; }
+    }
 }

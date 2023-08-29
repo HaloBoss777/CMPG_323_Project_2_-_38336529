@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Project2_CMPG323.CORE.DTO;
 using Project2_CMPG323.CORE.Services;
 
 namespace Project2_CMPG323.API.Controllers
@@ -36,6 +37,47 @@ namespace Project2_CMPG323.API.Controllers
             }
 
             return Ok(foundRecord);
+        }
+
+
+        //https://Localhost:1234/api/OderDetails/CreateOrderDetail
+        [HttpPost]
+        [Route("/api/OderDetails/CreateOrderDetail")]
+        public async Task<IActionResult> CreateOrderDetail([FromBody] CreateOrderDetailDTO createOrderDetailDTO)
+        {
+            var createdOrderDetail = await _orderDetailsSerive.CreateOrderDetailAsync(createOrderDetailDTO);
+
+            return CreatedAtAction(nameof(GetOrderDetail), new {id = createdOrderDetail.OrderDetailsId} ,createdOrderDetail);
+        }
+
+        //https://Localhost:1234/api/OderDetails/UpdateOrderDetail
+        [HttpPatch]
+        [Route("/api/OderDetails/UpdateOrderDetail/{id}")]
+        public async Task<IActionResult> UpdateOrderDetail([FromRoute] short id, [FromBody] UpdateOrderDetailDTO updateOrderDetailDTO)
+        {
+            var updatedRecord = await _orderDetailsSerive.UpdateOrderDetailAsync(id, updateOrderDetailDTO);
+
+            if(updatedRecord is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(updatedRecord);
+        }
+
+        //https://Localhost:1234/api/OderDetails/DeleteOrderDetail/{id}
+        [HttpDelete]
+        [Route("/api/OderDetails/DeleteOrderDetail/{id}")]
+        public async Task<IActionResult> DeleteOrderDetail([FromRoute] short id)
+        {
+            var deletedRecord = await _orderDetailsSerive.DeleteOrderDetailAsync(id);
+
+            if(deletedRecord is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(deletedRecord);
         }
     }
 }
