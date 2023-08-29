@@ -17,6 +17,7 @@ namespace Project2_CMPG323.CORE.Services
         Task<OrderDTO> CreateOrderAsync(CreateOrderDTO orderDTO);
         Task<OrderDTO?> UpdateOrderAsync(short id, UpdateOrderDTO updateOrderDTO);
         Task<OrderDTO?> DeleteOrderAsync(short id);
+        Task<List<OrderDTO>> GetAllOrdersOfCustomerAsync(short id);
     }
 
     public class OrderService : IOrderService
@@ -156,6 +157,18 @@ namespace Project2_CMPG323.CORE.Services
                 OrderDate = foundRecord.OrderDate
             };
 
+        }
+
+        public async Task<List<OrderDTO>> GetAllOrdersOfCustomerAsync(short id)
+        {
+            return await _project2Context.Orders.Where(x => x.CustomerId == id).Select(x => new OrderDTO
+            {
+                OrderId= x.OrderId,
+                CustomerId= x.CustomerId,
+                DeliveryAddress= x.DeliveryAddress,
+                OrderDate= x.OrderDate
+
+            }).ToListAsync();
         }
     }
 }

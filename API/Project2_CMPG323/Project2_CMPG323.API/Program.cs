@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderDetails, OrderDetailsService>();
 
 builder.Services.AddDbContext<Project2Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Project2ConnectionString")));
 
