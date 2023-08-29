@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Project2_CMPG323.API.Filter;
 using Project2_CMPG323.CORE.DTO;
 using Project2_CMPG323.CORE.Services;
 
@@ -19,6 +20,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://localhost:1234/api/Products/Get/All
         [HttpGet]
         [Route("/api/Products/Get/All")]
+        [AuthorizationFilter]
         public async Task<IActionResult> GetAllProducts()
         {
             return Ok(await _productService.GetAllProductsAsync());
@@ -27,6 +29,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://localhost:1234/api/Products/Get/All/{id}
         [HttpGet]
         [Route("/api/Products/Get/All/{id}")]
+        [AuthorizationFilter]
         public async Task<IActionResult> GetProduct([FromRoute] short id)
         {
             var productDTO = await _productService.GetProductAsync(id);
@@ -42,6 +45,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://localhost:1234/api/Products/CreateProduct
         [HttpPost]
         [Route("/api/Products/CreateProduct")]
+        [AuthorizationFilter]
         public async Task<IActionResult> CreateProduct([FromBody] CreatProductDTO createProductDTO)
         {
             var createdProductDTO = await _productService.CreateProductAsync(createProductDTO);
@@ -52,6 +56,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://localhost:1234/api/Products/UpdateProduct/{id}
         [HttpPatch]
         [Route("/api/Products/UpdateProduct/{id}")]
+        [AuthorizationFilter]
         public async Task<IActionResult> UpdateProduct([FromRoute] short id, [FromBody] UpdateProductDTO updateProductDTO)
         {
             var updatedProduct = await _productService.UpdatedProductAsync(id, updateProductDTO);
@@ -67,6 +72,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://localhost1234/api/Products/DeleteProduct/{id}
         [HttpDelete]
         [Route("/api/Products/DeleteProduct/{id}")]
+        [AuthorizationFilter]
         public async Task<IActionResult> DeleteProduct([FromRoute] short id)
         {
             var deletedRecord = await _productService.DeleteProductAsync(id);

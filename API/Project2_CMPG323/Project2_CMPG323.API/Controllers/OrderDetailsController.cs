@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Project2_CMPG323.API.Filter;
 using Project2_CMPG323.CORE.DTO;
 using Project2_CMPG323.CORE.Services;
 
@@ -19,6 +20,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://Localhost:1234/api/OrderDetails/Get/All
         [HttpGet]
         [Route("/api/OrderDetails/Get/All")]
+        [AuthorizationFilter]
         public async Task<IActionResult> GetAllOrderDetails()
         {
             return Ok(await _orderDetailsSerive.GetAllOrderDetailsAsync());
@@ -27,6 +29,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://Localhost:1234/api/OrderDetails/Get/{id}
         [HttpGet]
         [Route("/api/OrderDetails/Get/{id}")]
+        [AuthorizationFilter]
         public async Task<IActionResult> GetOrderDetail([FromRoute] short id)
         {
             var foundRecord = await _orderDetailsSerive.GetOrderDetailAsync(id);
@@ -43,6 +46,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://Localhost:1234/api/OderDetails/CreateOrderDetail
         [HttpPost]
         [Route("/api/OderDetails/CreateOrderDetail")]
+        [AuthorizationFilter]
         public async Task<IActionResult> CreateOrderDetail([FromBody] CreateOrderDetailDTO createOrderDetailDTO)
         {
             var createdOrderDetail = await _orderDetailsSerive.CreateOrderDetailAsync(createOrderDetailDTO);
@@ -53,6 +57,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://Localhost:1234/api/OderDetails/UpdateOrderDetail
         [HttpPatch]
         [Route("/api/OderDetails/UpdateOrderDetail/{id}")]
+        [AuthorizationFilter]
         public async Task<IActionResult> UpdateOrderDetail([FromRoute] short id, [FromBody] UpdateOrderDetailDTO updateOrderDetailDTO)
         {
             var updatedRecord = await _orderDetailsSerive.UpdateOrderDetailAsync(id, updateOrderDetailDTO);
@@ -68,6 +73,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://Localhost:1234/api/OderDetails/DeleteOrderDetail/{id}
         [HttpDelete]
         [Route("/api/OderDetails/DeleteOrderDetail/{id}")]
+        [AuthorizationFilter]
         public async Task<IActionResult> DeleteOrderDetail([FromRoute] short id)
         {
             var deletedRecord = await _orderDetailsSerive.DeleteOrderDetailAsync(id);
@@ -83,6 +89,7 @@ namespace Project2_CMPG323.API.Controllers
         //https://Localhost:1234/api/OderDetails/GetAllProducts/{id}
         [HttpGet]
         [Route("/api/OderDetails/GetAllProducts/{id}")]
+        [AuthorizationFilter]
         public async Task<IActionResult> GetAllProductsOfOrder([FromRoute] short id)
         {
             var foundRecords = await _orderDetailsSerive.GetAllProductsOfOrderAsync(id);
