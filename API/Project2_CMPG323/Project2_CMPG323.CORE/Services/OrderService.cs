@@ -23,6 +23,18 @@ namespace Project2_CMPG323.CORE.Services
     {
         private readonly Project2Context _project2Context;
 
+        private async Task<Order?> findOrderAsync(short id)
+        {
+            var foundRecord = await _project2Context.Orders.Where(x => x.OrderId == id).FirstOrDefaultAsync();
+
+            if (foundRecord is null)
+            {
+                return null;
+            }
+
+            return foundRecord;
+        }
+
         public OrderService(Project2Context project2Context) 
         {
             _project2Context = project2Context;
@@ -91,9 +103,9 @@ namespace Project2_CMPG323.CORE.Services
 
         public async Task<OrderDTO?> UpdateOrderAsync(short id, UpdateOrderDTO updateOrderDTO)
         {
-            var foundRecord = await _project2Context.Orders.Where(x => x.OrderId == id).FirstOrDefaultAsync();
+            var foundRecord = await findOrderAsync(id);
 
-            if(foundRecord is null)
+            if (foundRecord is null)
             {
                 return null;
             }
@@ -126,7 +138,7 @@ namespace Project2_CMPG323.CORE.Services
 
         public async Task<OrderDTO?> DeleteOrderAsync(short id)
         {
-            var foundRecord = _project2Context.Orders.Where(x => x.OrderId == id).FirstOrDefault();
+            var foundRecord = await findOrderAsync(id);
 
             if (foundRecord is null)
             {
