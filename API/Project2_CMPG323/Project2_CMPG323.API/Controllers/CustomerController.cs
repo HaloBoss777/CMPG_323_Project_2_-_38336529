@@ -55,7 +55,7 @@ namespace Project2_CMPG323.API.Controllers
         [Route("/api/Customer/UpdateCustomer/{id}")]
         public async Task<IActionResult> UpdateCustomer([FromRoute] short id, [FromBody] UpdatedCustomerDTO _updatedCustomerDTO)
         {
-            var updatedCustomer = await _customerService.UpdateCustomer(id, _updatedCustomerDTO);
+            var updatedCustomer = await _customerService.UpdateCustomerAsync(id, _updatedCustomerDTO);
 
             if(updatedCustomer is null)
             {

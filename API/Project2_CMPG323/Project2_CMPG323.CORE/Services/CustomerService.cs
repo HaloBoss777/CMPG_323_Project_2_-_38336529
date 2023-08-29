@@ -17,7 +17,7 @@ namespace Project2_CMPG323.CORE.Services
         Task<List<CustomerDTO>> GetAllCustomersAsync();
         Task<CustomerDTO?> GetCustomerAsync(short Id);
         Task<CustomerDTO> CreateCustomerAsync(AddCustomerDTO addCustomerDTO);
-        Task<CustomerDTO?> UpdateCustomer(short id, UpdatedCustomerDTO _updatedCustomerDTO);
+        Task<CustomerDTO?> UpdateCustomerAsync(short id, UpdatedCustomerDTO _updatedCustomerDTO);
         Task<CustomerDTO?> DeleteCustomerAsync(short id);
     }
 
@@ -95,7 +95,7 @@ namespace Project2_CMPG323.CORE.Services
             };
         }
 
-        public async Task<CustomerDTO?> UpdateCustomer(short id, UpdatedCustomerDTO _updatedCustomerDTO)
+        public async Task<CustomerDTO?> UpdateCustomerAsync(short id, UpdatedCustomerDTO _updatedCustomerDTO)
         {
             var customerRecord = await _project2Context.Customers.Where(x => x.CustomerId == id).FirstOrDefaultAsync();
 

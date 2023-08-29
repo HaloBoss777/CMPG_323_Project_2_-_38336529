@@ -29,7 +29,7 @@ namespace Project2_CMPG323.API.Controllers
         [Route("/api/Products/Get/All/{id}")]
         public async Task<IActionResult> GetProduct([FromRoute] short id)
         {
-            var productDTO = await _productService.GetProduct(id);
+            var productDTO = await _productService.GetProductAsync(id);
 
             if (productDTO is null)
             {
@@ -44,7 +44,7 @@ namespace Project2_CMPG323.API.Controllers
         [Route("/api/Products/CreateProduct")]
         public async Task<IActionResult> CreateProduct([FromBody] CreatProductDTO createProductDTO)
         {
-            var createdProductDTO = await _productService.CreateProduct(createProductDTO);
+            var createdProductDTO = await _productService.CreateProductAsync(createProductDTO);
 
             return CreatedAtAction(nameof(GetProduct), new { id = createdProductDTO.ProductId }, createdProductDTO);
         }
@@ -54,7 +54,7 @@ namespace Project2_CMPG323.API.Controllers
         [Route("/api/Products/UpdateProduct/{id}")]
         public async Task<IActionResult> UpdateProduct([FromRoute] short id, [FromBody] UpdateProductDTO updateProductDTO)
         {
-            var updatedProduct = await _productService.UpdatedProduct(id, updateProductDTO);
+            var updatedProduct = await _productService.UpdatedProductAsync(id, updateProductDTO);
 
             if (updatedProduct is null) 
             {
@@ -62,6 +62,21 @@ namespace Project2_CMPG323.API.Controllers
             }
 
             return Ok(updatedProduct);
+        }
+
+        //https://localhost1234/api/Products/DeleteProduct/{id}
+        [HttpDelete]
+        [Route("/api/Products/DeleteProduct/{id}")]
+        public async Task<IActionResult> DeleteProduct([FromRoute] short id)
+        {
+            var deletedRecord = await _productService.DeleteProductAsync(id);
+
+            if(deletedRecord is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(deletedRecord);
         }
     }
 }

@@ -14,9 +14,10 @@ namespace Project2_CMPG323.CORE.Services
     public interface IProductService
     {
         Task<List<ProductDTO>> GetAllProductsAsync();
-        Task<ProductDTO?> GetProduct(short id);
-        Task<ProductDTO> CreateProduct(CreatProductDTO creatProductDTO);
-        Task<ProductDTO?> UpdatedProduct(short id, UpdateProductDTO updateProductDTO);
+        Task<ProductDTO?> GetProductAsync(short id);
+        Task<ProductDTO> CreateProductAsync(CreatProductDTO creatProductDTO);
+        Task<ProductDTO?> UpdatedProductAsync(short id, UpdateProductDTO updateProductDTO);
+        Task<ProductDTO?> DeleteProductAsync(short id);
     }
 
     public class ProductService : IProductService
@@ -40,7 +41,7 @@ namespace Project2_CMPG323.CORE.Services
             }).ToListAsync();
         }
 
-        public async Task<ProductDTO?> GetProduct(short id)
+        public async Task<ProductDTO?> GetProductAsync(short id)
         {
             return await _project2Context.Products.Where(x => x.ProductId == id).Select(x => new ProductDTO
             {
@@ -52,7 +53,7 @@ namespace Project2_CMPG323.CORE.Services
             }).FirstOrDefaultAsync();
         }
 
-        public async Task<ProductDTO> CreateProduct(CreatProductDTO creatProductDTO)
+        public async Task<ProductDTO> CreateProductAsync(CreatProductDTO creatProductDTO)
         {
             int lastProductId = 0;
 
@@ -89,7 +90,7 @@ namespace Project2_CMPG323.CORE.Services
         }
 
 
-        public async Task<ProductDTO?> UpdatedProduct(short id, UpdateProductDTO updateProductDTO)
+        public async Task<ProductDTO?> UpdatedProductAsync(short id, UpdateProductDTO updateProductDTO)
         {
             var foundRecord = await _project2Context.Products.Where(x => x.ProductId == id).FirstOrDefaultAsync();
 
@@ -118,6 +119,27 @@ namespace Project2_CMPG323.CORE.Services
             return new ProductDTO
             {
                 ProductId= foundRecord.ProductId,
+                ProductDescription = foundRecord.ProductDescription,
+                ProductName = foundRecord.ProductName,
+                UnitsInStock = foundRecord.UnitsInStock
+            };
+        }
+
+        public async Task<ProductDTO?> DeleteProductAsync(short id)
+        {
+            var foundRecord = await _project2Context.Products.Where(x => x.ProductId == id).FirstOrDefaultAsync();
+
+            if(foundRecord is null)
+            {
+                return null;
+            }
+
+            _project2Context.Products.Remove(foundRecord);
+            await _project2Context.SaveChangesAsync();
+
+            return new ProductDTO
+            {
+                ProductId = foundRecord.ProductId,
                 ProductDescription = foundRecord.ProductDescription,
                 ProductName = foundRecord.ProductName,
                 UnitsInStock = foundRecord.UnitsInStock
