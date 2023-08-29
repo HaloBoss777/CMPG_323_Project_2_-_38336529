@@ -16,6 +16,7 @@ namespace Project2_CMPG323.CORE.Services
         Task<List<ProductDTO>> GetAllProductsAsync();
         Task<ProductDTO?> GetProduct(short id);
         Task<ProductDTO> CreateProduct(CreatProductDTO creatProductDTO);
+        Task<ProductDTO?> UpdatedProduct(short id, UpdateProductDTO updateProductDTO);
     }
 
     public class ProductService : IProductService
@@ -87,5 +88,40 @@ namespace Project2_CMPG323.CORE.Services
             };
         }
 
+
+        public async Task<ProductDTO?> UpdatedProduct(short id, UpdateProductDTO updateProductDTO)
+        {
+            var foundRecord = await _project2Context.Products.Where(x => x.ProductId == id).FirstOrDefaultAsync();
+
+            if (foundRecord is null)
+            {
+                return null;
+            }
+
+            if(updateProductDTO.ProductName is not null)
+            {
+                foundRecord.ProductName = updateProductDTO.ProductName;
+            }
+
+            if(updateProductDTO.ProductDescription is not null)
+            {
+                foundRecord.ProductDescription = updateProductDTO.ProductDescription;
+            }
+
+            if(updateProductDTO.UnitsInStock is not null)
+            {
+                foundRecord.UnitsInStock = updateProductDTO.UnitsInStock;
+            }
+
+            await _project2Context.SaveChangesAsync();
+
+            return new ProductDTO
+            {
+                ProductId= foundRecord.ProductId,
+                ProductDescription = foundRecord.ProductDescription,
+                ProductName = foundRecord.ProductName,
+                UnitsInStock = foundRecord.UnitsInStock
+            };
+        }
     }
 }

@@ -23,4 +23,11 @@ namespace Project2_CMPG323.CORE.DTO
         public string? ProductDescription { get; set; }
         public int? UnitsInStock { get; set; }
     }
+
+    public class UpdateProductDTO
+    {
+        public string? ProductName { get; set; }
+        public string? ProductDescription { get; set; }
+        public int? UnitsInStock { get; set; }
+    }
 }

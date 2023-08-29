@@ -48,5 +48,20 @@ namespace Project2_CMPG323.API.Controllers
 
             return CreatedAtAction(nameof(GetProduct), new { id = createdProductDTO.ProductId }, createdProductDTO);
         }
+
+        //https://localhost:1234/api/Products/UpdateProduct/{id}
+        [HttpPatch]
+        [Route("/api/Products/UpdateProduct/{id}")]
+        public async Task<IActionResult> UpdateProduct([FromRoute] short id, [FromBody] UpdateProductDTO updateProductDTO)
+        {
+            var updatedProduct = await _productService.UpdatedProduct(id, updateProductDTO);
+
+            if (updatedProduct is null) 
+            {
+                return BadRequest();
+            }
+
+            return Ok(updatedProduct);
+        }
     }
 }
