@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Project2_CMPG323.CORE.DTO;
 using Project2_CMPG323.CORE.Services;
 
 namespace Project2_CMPG323.API.Controllers
@@ -24,6 +25,30 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(await _orderService.GetAllOrdersAsync());
         }
 
+        //https://Localhost:1234/api/Orders/Get/{id}
+        [HttpGet]
+        [Route("/api/Orders/Get/{id}")]
+        public async Task<IActionResult> GetOrder([FromRoute] short id)
+        {
+            var foundRecord = await _orderService.GetOrderAsync(id);
+
+            if (foundRecord is null) 
+            {
+                return NotFound();
+            }
+
+            return Ok(foundRecord);
+        }
+
+        //https://Localhost:1234/api/Orders/CreateOrder
+        [HttpPost]
+        [Route("/api/Orders/CreateOrder")]
+        public async Task<IActionResult> CreateOrder([FromBody] CreateOrderDTO createOrderDTO)
+        {
+            var CreatedOrder = await _orderService.CreateOrderAsync(createOrderDTO);
+
+            return CreatedAtAction(nameof(GetOrder), new { id = CreatedOrder.OrderId }, CreatedOrder);
+        }
 
     }
 }

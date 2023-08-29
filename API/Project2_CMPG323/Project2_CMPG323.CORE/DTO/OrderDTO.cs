@@ -15,4 +15,12 @@ namespace Project2_CMPG323.CORE.DTO
         public short CustomerId { get; set; }
         public string? DeliveryAddress { get; set; }
     }
+
+    public class CreateOrderDTO
+    {
+        public DateTime OrderDate { get; set; }
+        public short CustomerId { get; set; }
+        public string? DeliveryAddress { get; set; }
+    }
+
 }
