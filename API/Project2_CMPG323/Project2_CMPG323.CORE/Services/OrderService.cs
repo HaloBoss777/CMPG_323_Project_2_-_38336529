@@ -15,6 +15,7 @@ namespace Project2_CMPG323.CORE.Services
         Task<List<OrderDTO>> GetAllOrdersAsync();
         Task<OrderDTO?> GetOrderAsync(short id);
         Task<OrderDTO> CreateOrderAsync(CreateOrderDTO orderDTO);
+        Task<OrderDTO?> UpdateOrderAsync(short id, UpdateOrderDTO updateOrderDTO);
     }
 
     public class OrderService : IOrderService
@@ -84,6 +85,41 @@ namespace Project2_CMPG323.CORE.Services
                 CustomerId = addOrderDomainModel.CustomerId,
                 DeliveryAddress = addOrderDomainModel.DeliveryAddress,
                 OrderDate = addOrderDomainModel.OrderDate
+            };
+        }
+
+        public async Task<OrderDTO?> UpdateOrderAsync(short id, UpdateOrderDTO updateOrderDTO)
+        {
+            var foundRecord = await _project2Context.Orders.Where(x => x.OrderId == id).FirstOrDefaultAsync();
+
+            if(foundRecord is null)
+            {
+                return null;
+            }
+
+            if(updateOrderDTO.CustomerId is not null)
+            {
+                foundRecord.CustomerId = (short)updateOrderDTO.CustomerId;
+            }
+
+            if(updateOrderDTO.DeliveryAddress is not null)
+            {
+                foundRecord.DeliveryAddress = updateOrderDTO.DeliveryAddress;
+            }
+
+            if(updateOrderDTO.OrderDate is not null)
+            {
+                foundRecord.OrderDate = (DateTime)updateOrderDTO.OrderDate;
+            }
+
+            await _project2Context.SaveChangesAsync();
+
+            return new OrderDTO
+            {
+                OrderId = foundRecord.OrderId,
+                CustomerId = foundRecord.CustomerId,
+                DeliveryAddress = foundRecord.DeliveryAddress,
+                OrderDate = foundRecord.OrderDate,
             };
         }
     }

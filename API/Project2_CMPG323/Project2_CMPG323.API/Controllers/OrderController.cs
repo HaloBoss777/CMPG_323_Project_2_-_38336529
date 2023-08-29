@@ -50,5 +50,19 @@ namespace Project2_CMPG323.API.Controllers
             return CreatedAtAction(nameof(GetOrder), new { id = CreatedOrder.OrderId }, CreatedOrder);
         }
 
+        //https://Localhost:1234/api/Orders/UpdateOrder/{id}
+        [HttpPatch]
+        [Route("/api/Orders/UpdateOrder/{id}")]
+        public async Task<IActionResult> UpdateOrder([FromRoute]short id, [FromBody] UpdateOrderDTO updateOrderDTO)
+        {
+            var updatedRecord = await _orderService.UpdateOrderAsync(id, updateOrderDTO);
+
+            if(updatedRecord is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(updatedRecord);
+        }
     }
 }
