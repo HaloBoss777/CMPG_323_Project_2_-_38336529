@@ -12,6 +12,7 @@ namespace Project2_CMPG323.CORE.Services
     public interface IOrderDetails
     {
         Task<List<OrderDetailsDTO>> GetAllOrderDetailsAsync();
+        Task<OrderDetailsDTO?> GetOrderDetailAsync(short id);
     }
 
     public class OrderDetailsService : IOrderDetails
@@ -36,7 +37,18 @@ namespace Project2_CMPG323.CORE.Services
             }).ToListAsync();
         }
 
+        public async Task<OrderDetailsDTO?> GetOrderDetailAsync(short id)
+        {
+            return await _project2Context.OrderDetails.Where(x => x.OrderDetailsId == id).Select(x => new OrderDetailsDTO
+            {
+                OrderDetailsId = x.OrderDetailsId,
+                OrderId = x.OrderId,
+                ProductId = x.ProductId,
+                Quantity = x.Quantity,
+                Discount = x.Discount
 
+            }).FirstOrDefaultAsync();
+        }
 
     }
 }

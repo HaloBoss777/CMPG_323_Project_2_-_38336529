@@ -22,5 +22,20 @@ namespace Project2_CMPG323.API.Controllers
         {
             return Ok(await _orderDetailsSerive.GetAllOrderDetailsAsync());
         }
+
+        //https://Localhost:1234/api/OrderDetails/Get/{id}
+        [HttpGet]
+        [Route("/api/OrderDetails/Get/{id}")]
+        public async Task<IActionResult> GetOrderDetail([FromRoute] short id)
+        {
+            var foundRecord = await _orderDetailsSerive.GetOrderDetailAsync(id);
+
+            if (foundRecord is null) 
+            {
+                return NotFound();
+            }
+
+            return Ok(foundRecord);
+        }
     }
 }
