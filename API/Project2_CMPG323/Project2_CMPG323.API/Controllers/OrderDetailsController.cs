@@ -79,5 +79,20 @@ namespace Project2_CMPG323.API.Controllers
 
             return Ok(deletedRecord);
         }
+
+        //https://Localhost:1234/api/OderDetails/GetAllProducts/{id}
+        [HttpGet]
+        [Route("/api/OderDetails/GetAllProducts/{id}")]
+        public async Task<IActionResult> GetAllProductsOfOrder([FromRoute] short id)
+        {
+            var foundRecords = await _orderDetailsSerive.GetAllProductsOfOrderAsync(id);
+
+            if(foundRecords is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(foundRecords);
+        }
     }
 }

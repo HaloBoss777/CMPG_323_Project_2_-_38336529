@@ -17,6 +17,7 @@ namespace Project2_CMPG323.CORE.Services
         Task<OrderDetailsDTO> CreateOrderDetailAsync(CreateOrderDetailDTO createOrderDetailsDTO);
         Task<OrderDetailsDTO?> UpdateOrderDetailAsync(short id, UpdateOrderDetailDTO updateOrderDetailDTO);
         Task<OrderDetailsDTO?> DeleteOrderDetailAsync(short id);
+        Task<AllProductOfOrderDetailDTO?> GetAllProductsOfOrderAsync(short id);
     }
 
     public class OrderDetailsService : IOrderDetails
@@ -153,6 +154,24 @@ namespace Project2_CMPG323.CORE.Services
                 ProductId = foundRecord.ProductId,
                 Quantity = foundRecord.Quantity,
                 Discount = foundRecord.Discount,
+            };
+        }
+
+        public async Task<AllProductOfOrderDetailDTO?> GetAllProductsOfOrderAsync(short id)
+        {
+            var products = await _project2Context.OrderDetails.Where(x => x.OrderId == id).Include(x =>  x.Product).Select(x => new ProductDTO
+            {
+                ProductId = x.ProductId,
+                ProductName = x.Product.ProductName,
+                ProductDescription = x.Product.ProductDescription,
+                UnitsInStock = x.Product.UnitsInStock,
+
+            }).ToListAsync();
+
+            return new AllProductOfOrderDetailDTO
+            {
+                OrderId = id,
+                Products = products
             };
         }
     }

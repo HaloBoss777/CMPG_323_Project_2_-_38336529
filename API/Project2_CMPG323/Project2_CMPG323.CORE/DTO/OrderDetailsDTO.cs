@@ -40,4 +40,11 @@ namespace Project2_CMPG323.CORE.DTO
 
         public int? Discount { get; set; }
     }
+
+    public class AllProductOfOrderDetailDTO 
+    {
+        public short OrderId { get; set; }
+
+        public List<ProductDTO>? Products { get; set; }
+    }
 }
