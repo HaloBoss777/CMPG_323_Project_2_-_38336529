@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Identity.Client;
 using Project2_CMPG323.CORE.DTO;
 using Project2_CMPG323.CORE.Models;
 using Project2_CMPG323.CORE.Repos;
@@ -18,6 +19,7 @@ namespace Project2_CMPG323.CORE.Services
         Task<ProductDTO> CreateProductAsync(CreatProductDTO creatProductDTO);
         Task<ProductDTO?> UpdatedProductAsync(short id, UpdateProductDTO updateProductDTO);
         Task<ProductDTO?> DeleteProductAsync(short id);
+
     }
 
     public class ProductService : IProductService
@@ -156,6 +158,7 @@ namespace Project2_CMPG323.CORE.Services
                 ProductName = foundRecord.ProductName,
                 UnitsInStock = foundRecord.UnitsInStock
             };
+
         }
     }
 }

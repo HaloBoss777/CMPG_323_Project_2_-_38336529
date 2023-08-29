@@ -64,5 +64,20 @@ namespace Project2_CMPG323.API.Controllers
 
             return Ok(updatedRecord);
         }
+
+        //https://Localhost:1234/api/Orders/DeleteOrder/{id}
+        [HttpDelete]
+        [Route("/api/Orders/DeleteOrder/{id}")]
+        public async Task<IActionResult> DeleteOrder([FromRoute] short id)
+        {
+            var deletedRecord = await _orderService.DeleteOrderAsync(id);
+
+            if(deletedRecord is null)
+            { 
+                return NotFound();
+            }
+
+            return Ok(deletedRecord);
+        }
     }
 }
