@@ -24,6 +24,18 @@ namespace Project2_CMPG323.CORE.Services
     {
         private readonly Project2Context _project2Context;
 
+        private async Task<Product?> findProductAsync(short id)
+        {
+            var foundRecord = await _project2Context.Products.Where(x => x.ProductId == id).FirstOrDefaultAsync();
+
+            if(foundRecord is null)
+            {
+                return null;
+            }
+
+            return foundRecord;
+        }
+
         public ProductService(Project2Context project2Context)
         {
             _project2Context = project2Context;
@@ -92,7 +104,7 @@ namespace Project2_CMPG323.CORE.Services
 
         public async Task<ProductDTO?> UpdatedProductAsync(short id, UpdateProductDTO updateProductDTO)
         {
-            var foundRecord = await _project2Context.Products.Where(x => x.ProductId == id).FirstOrDefaultAsync();
+            var foundRecord = await findProductAsync(id);
 
             if (foundRecord is null)
             {
@@ -127,9 +139,9 @@ namespace Project2_CMPG323.CORE.Services
 
         public async Task<ProductDTO?> DeleteProductAsync(short id)
         {
-            var foundRecord = await _project2Context.Products.Where(x => x.ProductId == id).FirstOrDefaultAsync();
+            var foundRecord = await findProductAsync(id);
 
-            if(foundRecord is null)
+            if (foundRecord is null)
             {
                 return null;
             }

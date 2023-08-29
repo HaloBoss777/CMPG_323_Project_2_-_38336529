@@ -25,6 +25,18 @@ namespace Project2_CMPG323.CORE.Services
     {
         private readonly Project2Context _project2Context;
 
+        private async Task<Customer?> findCustomerAsync(short id)
+        {
+            var foundRecord = await _project2Context.Customers.Where(x => x.CustomerId == id).FirstOrDefaultAsync();
+
+            if (foundRecord is null)
+            {
+                return null;
+            }
+
+            return foundRecord;
+        }
+
         public CustomerService(Project2Context project2Context)
         {
             _project2Context = project2Context;
@@ -97,9 +109,9 @@ namespace Project2_CMPG323.CORE.Services
 
         public async Task<CustomerDTO?> UpdateCustomerAsync(short id, UpdatedCustomerDTO _updatedCustomerDTO)
         {
-            var customerRecord = await _project2Context.Customers.Where(x => x.CustomerId == id).FirstOrDefaultAsync();
+            var customerRecord = await findCustomerAsync(id);
 
-            if(customerRecord is null)
+            if (customerRecord is null)
             {
                 return null;
             }
@@ -139,9 +151,9 @@ namespace Project2_CMPG323.CORE.Services
 
         public async Task<CustomerDTO?> DeleteCustomerAsync(short id)
         {
-            var customerRecord = await _project2Context.Customers.FirstOrDefaultAsync(x => x.CustomerId == id);
+            var customerRecord = await findCustomerAsync(id);
 
-            if(customerRecord is null)
+            if (customerRecord is null)
             {
                 return null;
             }
