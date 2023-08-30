@@ -24,8 +24,21 @@
   <li>Get a specific Customer which needs a customer ID passed to the endpoint.</li>
   <li>Create a Customer which needs a Title, Name, Surname and Cellphone to be passed to the endpoint.</li>
   <li>Update a Customer which needs a ID of the customer to update and the needed info of what to change.</li>
-  <li>Delete a Customer which needs a ID of of the customer to delete.</li>
+  <li>Delete a Customer which needs a ID of the customer to delete.</li>
 </ul>  
 
+<h2>For Order you have multiple endpoints:<h2>
+
+<img src="image-1.png" alt="Order Endpoints">
+
+<h3>Order Enpoint details</h3>
+<ul>
+  <li>Get All Orders</li>
+  <li>Get a specific Order which needs a Order ID passed to the endpoint.</li>
+  <li>Create a Order which needs a Orderdate, CustomerID and a deliveryAddress to be passed to the endpoint.</li>
+  <li>Update a Order which needs a ID of the Order to update and the needed info of what to change.</li>
+  <li>Delete a Order which needs a ID of the Order to delete.</li>
+  <li>Get Customer Orders which get all the orders of a specific customer, this endpoint needs a CustomerID passed to it</li>
+</ul>  
 </body>
 </html>
