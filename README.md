@@ -67,5 +67,9 @@
   <li>Update a Product which needs a ID of the Product to update and the needed info of what to change.</li>
   <li>Delete a Product which needs a ID of the Product to delete.</li>
 </ul>  
+
+<h2>All the Data Transfer Objects:</h2>
+<img src="image-4.png" alt="Al DTO's">
+
 </body>
 </html>
