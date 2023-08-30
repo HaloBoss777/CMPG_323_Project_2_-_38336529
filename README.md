@@ -71,5 +71,8 @@
 <h2>All the Data Transfer Objects:</h2>
 <img src="image-4.png" alt="Al DTO's">
 
+<h2>References:</h2>
+<p>Saini, S. 2023. Use C# and Build an ASP.NET Core Web API with Entity Framework Core, SQL Server, Authentication & Authorization | .NET 7. https://www.udemy.com/course/build-rest-apis-with-aspnet-core-web-api-entity-framework/learn/lecture/36980480#overview </p>
+
 </body>
 </html>

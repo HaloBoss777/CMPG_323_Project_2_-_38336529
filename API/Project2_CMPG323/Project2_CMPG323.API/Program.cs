@@ -20,7 +20,7 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderDetails, OrderDetailsService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
-//
+//Set up how to handle JWT tokens
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => 
 {
     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters

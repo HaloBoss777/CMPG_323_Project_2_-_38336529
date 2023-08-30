@@ -10,10 +10,12 @@ namespace Project2_CMPG323.API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        //Implement the Auth Service (Dependency Ingection)
         private readonly IAuthService _authService;
 
         public AuthController(IAuthService authService)
         {
+            //Injects only the Dependencys that are needed
             _authService = authService;
         }
 
