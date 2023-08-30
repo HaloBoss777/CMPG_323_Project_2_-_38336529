@@ -10,13 +10,16 @@ namespace Project2_CMPG323.API.Controllers
     [ApiController]
     public class OrderDetailsController : ControllerBase
     {
+        //Implement the OrderDetails Service (Dependency Ingection)
         private readonly IOrderDetails _orderDetailsSerive;
 
         public OrderDetailsController(IOrderDetails orderDetailsSerive)
         {
+            //Injects only the Dependencys that are needed
             _orderDetailsSerive = orderDetailsSerive;
         }
 
+        //Get All OrderDetails
         //https://Localhost:1234/api/OrderDetails/Get/All
         [HttpGet]
         [Route("/api/OrderDetails/Get/All")]
@@ -26,6 +29,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(await _orderDetailsSerive.GetAllOrderDetailsAsync());
         }
 
+        //Get a Specific  OrderDetail
         //https://Localhost:1234/api/OrderDetails/Get/{id}
         [HttpGet]
         [Route("/api/OrderDetails/Get/{id}")]
@@ -43,6 +47,7 @@ namespace Project2_CMPG323.API.Controllers
         }
 
 
+        //Create a OrderDetails
         //https://Localhost:1234/api/OderDetails/CreateOrderDetail
         [HttpPost]
         [Route("/api/OderDetails/CreateOrderDetail")]
@@ -54,6 +59,7 @@ namespace Project2_CMPG323.API.Controllers
             return CreatedAtAction(nameof(GetOrderDetail), new {id = createdOrderDetail.OrderDetailsId} ,createdOrderDetail);
         }
 
+        //Update a Specific OrderDetail
         //https://Localhost:1234/api/OderDetails/UpdateOrderDetail
         [HttpPatch]
         [Route("/api/OderDetails/UpdateOrderDetail/{id}")]
@@ -70,6 +76,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(updatedRecord);
         }
 
+        //Delete a OrderDetail
         //https://Localhost:1234/api/OderDetails/DeleteOrderDetail/{id}
         [HttpDelete]
         [Route("/api/OderDetails/DeleteOrderDetail/{id}")]
@@ -86,6 +93,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(deletedRecord);
         }
 
+        //Get all Products of a Order
         //https://Localhost:1234/api/OderDetails/GetAllProducts/{id}
         [HttpGet]
         [Route("/api/OderDetails/GetAllProducts/{id}")]

@@ -11,13 +11,17 @@ namespace Project2_CMPG323.API.Controllers
     [Route("[controller]")]
     public class CustomerController : ControllerBase
     {
+
+        //Implement the Customer Service (Dependency Ingection)
         public readonly ICustomerService _customerService;
 
         public CustomerController(ICustomerService customerService)
         {
+            //Injects only the Dependencys that are needed
             _customerService = customerService;
         }
 
+        //Get All Customers
         //https://localhost:1234/api/Customer/Get/All
         [HttpGet]
         [Route("/api/Customer/Get/All")]
@@ -27,6 +31,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(await _customerService.GetAllCustomersAsync());
         }
 
+        //Get a Specific Customer
         //https://Localhost:1234/api/Customer/Get/{id}
         [HttpGet]
         [Route("/api/Customer/Get/{id}")]
@@ -43,6 +48,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(customerDTO);
         }
 
+        //Create a Customer
         //https://Localhost:1234/api/Customer/CreateCustomer
         [HttpPost]
         [Route("/api/Customer/CreateCustomer")]
@@ -54,6 +60,7 @@ namespace Project2_CMPG323.API.Controllers
             return CreatedAtAction(nameof(GetCustomer), new { id = createdCustomerDTO.CustomerId }, createdCustomerDTO);
         }
 
+        //Updated a Customer Record
         //https://localhost:1234/api/Customer/UpdateCustomer/{id}
         [HttpPatch]
         [Route("/api/Customer/UpdateCustomer/{id}")]
@@ -70,6 +77,8 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(updatedCustomer);
         }
 
+
+        //Delete a Customer
         //https://localhost:1234/api/Customer/DeleteCustomer/{id}
         [HttpDelete]
         [Route("/api/Customer/DeleteCustomer/{id}")]

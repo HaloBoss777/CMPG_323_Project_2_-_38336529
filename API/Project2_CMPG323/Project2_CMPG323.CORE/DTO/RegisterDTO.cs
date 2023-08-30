@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project2_CMPG323.CORE.DTO
 {
+    //User Details
     public class RegisterDTO
     {
         public string Email { get; set; }

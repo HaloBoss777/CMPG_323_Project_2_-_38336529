@@ -10,14 +10,17 @@ namespace Project2_CMPG323.API.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
+        //Implement the Order Service (Dependency Ingection)
         public readonly IOrderService _orderService;
 
         public OrderController(IOrderService orderService)
         {
+            //Injects only the Dependencys that are needed
             _orderService = orderService;
         }
 
 
+        //Get All Orders
         //https://Localhost:1234/api/Orders/Get/All
         [HttpGet]
         [Route("/api/Orders/Get/All")]
@@ -27,6 +30,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(await _orderService.GetAllOrdersAsync());
         }
 
+        //Get a Specific Order
         //https://Localhost:1234/api/Orders/Get/{id}
         [HttpGet]
         [Route("/api/Orders/Get/{id}")]
@@ -43,6 +47,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(foundRecord);
         }
 
+        //Create a Order
         //https://Localhost:1234/api/Orders/CreateOrder
         [HttpPost]
         [Route("/api/Orders/CreateOrder")]
@@ -54,6 +59,7 @@ namespace Project2_CMPG323.API.Controllers
             return CreatedAtAction(nameof(GetOrder), new { id = CreatedOrder.OrderId }, CreatedOrder);
         }
 
+        //Update a Order Record
         //https://Localhost:1234/api/Orders/UpdateOrder/{id}
         [HttpPatch]
         [Route("/api/Orders/UpdateOrder/{id}")]
@@ -70,6 +76,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(updatedRecord);
         }
 
+        //Delete a Order Record
         //https://Localhost:1234/api/Orders/DeleteOrder/{id}
         [HttpDelete]
         [Route("/api/Orders/DeleteOrder/{id}")]
@@ -86,6 +93,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(deletedRecord);
         }
 
+        //Get All Orders of a Customer
         //https://localhost:1234/api/Order/Get/CustomerOrders/{id}
         [HttpGet]
         [Route("/api/Order/Get/CustomerOrders/{id}")]

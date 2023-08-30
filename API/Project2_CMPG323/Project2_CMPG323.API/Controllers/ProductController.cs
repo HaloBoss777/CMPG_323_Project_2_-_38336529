@@ -10,13 +10,16 @@ namespace Project2_CMPG323.API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        //Implement the Product Service (Dependency Ingection)
         public readonly IProductService _productService;
 
         public ProductController(IProductService productService)
         {
+            //Injects only the Dependencys that are needed
             _productService = productService;
         }
 
+        //Get all Products
         //https://localhost:1234/api/Products/Get/All
         [HttpGet]
         [Route("/api/Products/Get/All")]
@@ -26,6 +29,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(await _productService.GetAllProductsAsync());
         }
 
+        //Get a Specific Product
         //https://localhost:1234/api/Products/Get/All/{id}
         [HttpGet]
         [Route("/api/Products/Get/All/{id}")]
@@ -42,6 +46,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(productDTO);
         }
 
+        //Create a Product
         //https://localhost:1234/api/Products/CreateProduct
         [HttpPost]
         [Route("/api/Products/CreateProduct")]
@@ -53,6 +58,7 @@ namespace Project2_CMPG323.API.Controllers
             return CreatedAtAction(nameof(GetProduct), new { id = createdProductDTO.ProductId }, createdProductDTO);
         }
 
+        //Update a Specific Product
         //https://localhost:1234/api/Products/UpdateProduct/{id}
         [HttpPatch]
         [Route("/api/Products/UpdateProduct/{id}")]
@@ -69,6 +75,7 @@ namespace Project2_CMPG323.API.Controllers
             return Ok(updatedProduct);
         }
 
+        //Delete a Product
         //https://localhost1234/api/Products/DeleteProduct/{id}
         [HttpDelete]
         [Route("/api/Products/DeleteProduct/{id}")]

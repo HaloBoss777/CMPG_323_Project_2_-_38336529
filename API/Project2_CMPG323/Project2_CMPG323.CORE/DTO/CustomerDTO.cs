@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project2_CMPG323.CORE.DTO
 {
+
     public class CustomerDTO
     {
         public short CustomerId { get; set; }
