@@ -54,5 +54,18 @@
   <li>Delete a OrderDetail which needs a ID of the OrderDetail to delete.</li>
   <li>Get all Products of a Order, which needs a Order ID to be passed.</li>
 </ul>  
+
+<h2>For Product you have multiple endpoints:<h2>
+
+<img src="image-3.png" alt="Product Endpoints">
+
+<h3>Product Enpoint details</h3>
+<ul>
+  <li>Get All Products</li>
+  <li>Get a specific Product which needs a Product ID passed to the endpoint.</li>
+  <li>Create a Product which needs a Name, Description and units in stock to be passed to the endpoint.</li>
+  <li>Update a Product which needs a ID of the Product to update and the needed info of what to change.</li>
+  <li>Delete a Product which needs a ID of the Product to delete.</li>
+</ul>  
 </body>
 </html>
