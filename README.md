@@ -78,5 +78,8 @@
 <h1>Website Access:</h1>
 <p>https://project2cmpg323api20230828132747.azurewebsites.net/swagger/index.html</p>
 
+<h2>Branches:</h2>
+<p>Developer and Experimental branches was deleted for they have served their purpose</p>
+
 </body>
 </html>
