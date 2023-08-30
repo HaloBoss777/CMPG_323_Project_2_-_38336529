@@ -16,7 +16,7 @@
 
 <h2>For Customer you have multiple endpoints:<h2>
 
-<img src="![Alt text](image.png)" alt="Customer Endpoints">
+<img src="image.png" alt="Customer Endpoints">
 
 <h3>Customer Enpoint details</h3>
 <ul>
