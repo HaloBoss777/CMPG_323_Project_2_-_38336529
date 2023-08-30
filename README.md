@@ -75,5 +75,8 @@
 <p>Saini, S. 2023. Use C# and Build an ASP.NET Core Web API with Entity Framework Core, SQL Server, Authentication & Authorization | .NET 7. https://www.udemy.com/course/build-rest-apis-with-aspnet-core-web-api-entity-framework/learn/lecture/36980480#overview </p>
 <p>Zyl, J.V. 2023. API and Database Development. https://exceedit.tech/</p>
 
+<h1>Website Access:</h1>
+<p>https://project2cmpg323api20230828132747.azurewebsites.net/swagger/index.html</p>
+
 </body>
 </html>
