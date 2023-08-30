@@ -16,7 +16,7 @@
 
 <h2>For Customer you have multiple endpoints:<h2>
 
-<img src="image.png" alt="Customer Endpoints">
+<img src="/Images/image.png" alt="Customer Endpoints">
 
 <h3>Customer Enpoint details</h3>
 <ul>
@@ -29,7 +29,7 @@
 
 <h2>For Order you have multiple endpoints:<h2>
 
-<img src="image-1.png" alt="Order Endpoints">
+<img src="/Images/image-1.png" alt="Order Endpoints">
 
 <h3>Order Enpoint details</h3>
 <ul>
@@ -43,7 +43,7 @@
 
 <h2>For OrderDetails you have multiple endpoints:<h2>
 
-<img src="image-2.png" alt="OrderDetails Endpoints">
+<img src="/Images/image-2.png" alt="OrderDetails Endpoints">
 
 <h3>OrderDetails Enpoint details</h3>
 <ul>
@@ -57,7 +57,7 @@
 
 <h2>For Product you have multiple endpoints:<h2>
 
-<img src="image-3.png" alt="Product Endpoints">
+<img src="/Images/image-3.png" alt="Product Endpoints">
 
 <h3>Product Enpoint details</h3>
 <ul>
@@ -69,7 +69,7 @@
 </ul>  
 
 <h2>All the Data Transfer Objects:</h2>
-<img src="image-4.png" alt="Al DTO's">
+<img src="/Images/image-4.png" alt="Al DTO's">
 
 <h2>References:</h2>
 <p>Saini, S. 2023. Use C# and Build an ASP.NET Core Web API with Entity Framework Core, SQL Server, Authentication & Authorization | .NET 7. https://www.udemy.com/course/build-rest-apis-with-aspnet-core-web-api-entity-framework/learn/lecture/36980480#overview </p>
